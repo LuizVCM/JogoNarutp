@@ -1,10 +1,4 @@
-# JogoNarutp
-
-
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -863,12 +857,17 @@ public class Naruto {
             System.out.println("\nVocê esta lutando contra Tsunade, Obito, Orochimaru e Kakuzo. O que deseja fazer? (atacar, envenenar, curar, enfraquecer ou defender?)");
             String resposta9 = entrada.nextLine().toLowerCase();
             if("atacar".equals(resposta9)){
-                System.out.println("\nEscolha qual habilidade usar: ("+h1+" ou "+h2+")");
-                 String poder = entrada.nextLine();
-                 if(poder.equals(h1)){
-                 vidaTo -= habilidade1;
-                 }else if(poder.equals(h2)){
+                System.out.println("\nEscolha quem você quer lutar: (Kakuzo, Tsunade, Obito ou Orochimaru)");
+                 String escolha = entrada.nextLine().toLowerCase();
+                 if("kakuzo".equals(escolha)){
+                     System.out.println("Diga qual habilidade usar: ("+h1+" ou "+h2+")");
+                     String poder = entrada.nextLine();
+                 }else if("obito".equals(escolha)){
                  vidaTo -= habilidade2;
+                 }else if("Orochimaru".equals(escolha)){
+                 
+                 }else if("Tsunade".equals(escolha)){
+                 
                  }
                  int resultado9 = Math.random() < 0.5 ? hab1 : hab2;
                  
@@ -1002,8 +1001,9 @@ public class Naruto {
                 System.out.println("\n O Obito atacou com "+ resultadoOB+" de dano!");
                 System.out.println("\n O Kakuzo atacou com "+ resultadoK+" de dano!");
         
-              
-                System.out.println("\nTu defendeu perdendo 1hp de vida. Vida total: "+ vidaP+", vida Tsunade: "+vidaT);
+              int ataqueInimigo = resultadoK+resultadoO+resultadoOB+resultadoT;
+              vidaP -= ataqueInimigo;
+                System.out.println("\nTu perdeu"+ataqueInimigo+" 1hp de vida. Vida total: "+ vidaP+", vida Tsunade: "+vidaT);
                 System.out.println("Vida de Obito: "+ vidaTo);
                 System.out.println("Vida de Orochimaru: "+vidaO);
                 System.out.println("Vida de Kakuzo: "+vidaK);
@@ -1028,6 +1028,66 @@ public class Naruto {
                  
                  
                 System.out.println("Envenenou "+ personagem+" com +"+envenenar+" de dano");
+                
+                 int resultadoO;
+        if (Math.random() < 0.25) {
+            resultadoO = hab2; // 20% de chance
+        } else if (Math.random() < 0.5) {
+            resultadoO = hab3; // 20% de chance
+        } else if (Math.random() < 0.75) {
+            resultadoO = hab1; // 20% de chance
+        } else {
+            resultadoO = hab4; // 20% de chance
+             
+// 20% de chance
+        }
+        // Tsunade
+        int resultadoT;
+        if (Math.random() < 0.25) {
+            resultadoT = d2; // 20% de chance
+        } else if (Math.random() < 0.5) {
+            resultadoT = d3; // 20% de chance
+        } else if (Math.random() < 0.75) {
+            resultadoT = d1; // 20% de chance
+        } else {
+            resultadoT = d4; // 20% de chance
+        }
+        
+        // Kakuzo
+         int resultadoK;
+        if (Math.random() < 0.2) {
+            resultadoK = k2; // 20% de chance
+        } else if (Math.random() < 0.4) {
+            resultadoK = k3; // 20% de chance
+        } else if (Math.random() < 0.6) {
+            resultadoK = k1; // 20% de chance
+        } else {
+            resultadoK = k4; // 20% de chance
+        }
+        
+        // Obito
+         int resultadoOB;
+        if (Math.random() < 0.2) {
+            resultadoOB = T2; // 20% de chance
+        } else if (Math.random() < 0.4) {
+            resultadoOB = T3; // 20% de chance
+        } else if (Math.random() < 0.6) {
+            resultadoOB = T1; // 20% de chance
+        } else {
+            resultadoOB = T4; // 20% de chance
+        }
+
+        System.out.println("\nO Orochimaru atacou com " + resultadoO+" de dano!");// Usando if/else para escolher um dos quatro valores
+                System.out.println("\n A Tsunade atacou com "+ resultadoT+" de dano!");
+                System.out.println("\n O Obito atacou com "+ resultadoOB+" de dano!");
+                System.out.println("\n O Kakuzo atacou com "+ resultadoK+" de dano!");
+        
+              int ataqueInimigo = resultadoK+resultadoO+resultadoOB+resultadoT;
+              vidaP -= ataqueInimigo;
+                System.out.println("\nTu perdeu"+ataqueInimigo+" 1hp de vida. Vida total: "+ vidaP+", vida Tsunade: "+vidaT);
+                System.out.println("Vida de Obito: "+ vidaTo);
+                System.out.println("Vida de Orochimaru: "+vidaO);
+                System.out.println("Vida de Kakuzo: "+vidaK);
                 
             
             }else if("enfraquecer".equals(resposta9)){
@@ -1086,6 +1146,7 @@ public class Naruto {
            if(vidaP == 0){
         while(vidaP == 0){
             System.out.println("Voce perdeu... recomece reiniciando o jogo!!!!");
+            
         }
         }
            
@@ -1220,5 +1281,6 @@ public class Naruto {
              System.out.println("....");
               System.out.println("Produzido por Luiz");
          
+              entrada.close();
     }
 }
